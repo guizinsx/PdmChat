@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "570967268463",
+    "project_id": "omega-winter-349622",
+    "storage_bucket": "omega-winter-349622.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570967268463:android:8cde1d475f0427f835c19a",
+        "android_client_info": {
+          "package_name": "com.example.pdmchat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqnZ6uJSx5qkCKBmwef9RNOPhjC2K5rMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
