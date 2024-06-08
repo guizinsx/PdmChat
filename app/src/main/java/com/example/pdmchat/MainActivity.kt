@@ -12,6 +12,7 @@ import com.google.firebase.database.*
 class MainActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var binding: ActivityMainBinding
+    private val currentUser = "@guilherme"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 messages.clear()
                 for (data in snapshot.children) {
                     val message = data.getValue(Message::class.java)
-                    if (message != null) {
+                    if (message != null && message.recipient == currentUser) {
                         messages.add(message)
                     }
                 }
