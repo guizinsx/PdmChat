@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        // Button to navigate to SendMessageActivity
         binding.buttonSendMessage.setOnClickListener {
             startActivity(Intent(this, SendMessageActivity::class.java))
         }
