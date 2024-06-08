@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.pdmchat.databinding.ActivitySendMessageBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import android.util.Log
 
 class SendMessageActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
