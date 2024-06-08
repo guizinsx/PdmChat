@@ -11,25 +11,49 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pdmchat.databinding.ActivityMainBinding
 import com.google.firebase.database.*
 
 class MainActivity : ComponentActivity() {
     private lateinit var database: DatabaseReference
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
         database = FirebaseDatabase.getInstance().reference.child("messages")
 
-        setContent {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background
-            ) {
-                val messages = remember { mutableStateListOf<Message>() }
 
+        val messages = mutableListOf<Message>()
+        val adapter = MessageAdapter(messages)
+        binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewMessages.adapter = adapter
+
+
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                messages.clear()
+                for (data in snapshot.children) {
+                    val message = data.getValue(Message::class.java)
+                    if (message != null) {
+                        messages.add(message)
+                    }
+                }
+                adapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
 
             }
+        })
+
+        binding.buttonSendMessage.setOnClickListener {
+            startActivity(Intent(this, SendMessageActivity::class.java))
         }
     }
 }
