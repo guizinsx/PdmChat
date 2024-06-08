@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pdmchat.databinding.ItemMessageBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MessageAdapter(private val messages: List<Message>) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
@@ -22,7 +24,12 @@ class MessageAdapter(private val messages: List<Message>) : RecyclerView.Adapter
         fun bind(message: Message) {
             binding.textViewSender.text = "Sender: ${message.sender}"
             binding.textViewMessage.text = "Message: ${message.text}"
-            binding.textViewTimestamp.text = "Timestamp: ${message.timestamp}"
+
+            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+            val date = Date(message.timestamp)
+            val formattedDate = sdf.format(date)
+
+            binding.textViewTimestamp.text = "Timestamp: $formattedDate"
         }
     }
 }
