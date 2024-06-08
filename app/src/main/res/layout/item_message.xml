@@ -21,8 +21,15 @@
         android:layout_marginBottom="4dp"/>
 
     <TextView
-        android:id="@+id/textViewTimestamp"
+        android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Timestamp: "/>
+        android:text="Date: "
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time: "/>
 </LinearLayout>

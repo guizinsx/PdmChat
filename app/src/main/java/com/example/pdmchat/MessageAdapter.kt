@@ -25,11 +25,14 @@ class MessageAdapter(private val messages: List<Message>) : RecyclerView.Adapter
             binding.textViewSender.text = "Sender: ${message.sender}"
             binding.textViewMessage.text = "Message: ${message.text}"
 
-            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
             val date = Date(message.timestamp)
-            val formattedDate = sdf.format(date)
+            val formattedDate = dateFormat.format(date)
+            val formattedTime = timeFormat.format(date)
 
-            binding.textViewTimestamp.text = "Timestamp: $formattedDate"
+            binding.textViewDate.text = "Date: $formattedDate"
+            binding.textViewTime.text = "Time: $formattedTime"
         }
     }
 }
