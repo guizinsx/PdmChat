@@ -14,19 +14,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         database = FirebaseDatabase.getInstance().reference.child("messages")
-
 
         val messages = mutableListOf<Message>()
         val adapter = MessageAdapter(messages)
         binding.recyclerViewMessages.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMessages.adapter = adapter
-
 
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -37,11 +33,11 @@ class MainActivity : AppCompatActivity() {
                         messages.add(message)
                     }
                 }
+                messages.sortBy { it.timestamp }
                 adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
-
             }
         })
 
