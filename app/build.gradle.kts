@@ -72,6 +72,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("androidx.appcompat:appcompat:1.7.0")
 
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-analytics")
