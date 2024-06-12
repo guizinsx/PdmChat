@@ -1,5 +1,6 @@
 package com.example.pdmchat
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.textViewUser.text = "Caixa de mensagens de $currentUser"
 
         database = FirebaseDatabase.getInstance().reference.child("messages")
 
