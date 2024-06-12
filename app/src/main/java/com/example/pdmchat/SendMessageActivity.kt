@@ -1,5 +1,6 @@
 package com.example.pdmchat
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,11 @@ class SendMessageActivity : AppCompatActivity() {
                 sendMessage(sender, recipient, message)
                 finish()
             }
+        }
+
+        binding.buttonBack.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
